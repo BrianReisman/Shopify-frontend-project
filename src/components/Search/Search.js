@@ -19,7 +19,7 @@ const Search = ({ setSavedMovies, savedMovies }) => {
         setCurrMovie(res.data);
       })
       .catch((err) => {
-        // !! Add error
+        // !! Add error message. Modal?
         console.log(err);
       });
 
@@ -47,7 +47,7 @@ const Search = ({ setSavedMovies, savedMovies }) => {
       return setCurrMovie("");
     } else {
       alert(
-        `You\'ve already nominated ${currMovie.Title}! Didn't mean to? Visit your Nominated tab to remove it from your selection.`
+        `You've already nominated ${currMovie.Title}! Didn't mean to? Visit your Nominated tab to remove it from your selection.`
       );
     }
   };

@@ -11,7 +11,7 @@ import Home from "./components/Home/Home";
 import Nomination from "./components/Nomination/Nomination";
 function App() {
   const [savedMovies, setSavedMovies] = useState([]);
-  console.log(savedMovies);
+  // console.log(savedMovies);
 
   return (
     <GlobalStyles>

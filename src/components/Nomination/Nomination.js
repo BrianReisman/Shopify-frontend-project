@@ -3,7 +3,7 @@ import { ViewRoot, ViewHeader } from "../../GlobalComponents";
 import { Saved, X } from "./NominationElements";
 
 const Nomination = (props) => {
-  console.log("props from Nomination.js>>>", props);
+  // console.log("props from Nomination.js>>>", props);
 
   const savedMovies = props.savedMovies.map((movie) => {
     return (

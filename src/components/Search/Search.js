@@ -27,8 +27,8 @@ const Search = ({ setSavedMovies, savedMovies }) => {
   };
 
   const nominateHandler = (e) => {
-    if(!currMovie.Title){
-      return
+    if (!currMovie.Title) {
+      return;
     }
     if (savedMovies.length === 0) {
       setSavedMovies([currMovie]);

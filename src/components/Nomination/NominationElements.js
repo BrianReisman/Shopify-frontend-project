@@ -10,3 +10,10 @@ export const Saved = styled.div`
 export const X = styled.button`
   background-color: red;
 `;
+
+export const Message = styled.p`
+  font-size: 20px;
+  *{
+  font-size: 20px;
+  }
+`

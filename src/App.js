@@ -24,7 +24,7 @@ function App() {
           <Search setSavedMovies={setSavedMovies} savedMovies={savedMovies} />
         </Route>
         <Route path="/nominations">
-          <Nomination savedMovies={savedMovies}/>
+          <Nomination setSavedMovies={setSavedMovies} savedMovies={savedMovies}/>
         </Route>
         <Route path="/about">about the creator</Route>
       </Switch>

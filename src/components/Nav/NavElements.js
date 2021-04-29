@@ -24,6 +24,7 @@ export const Menu = styled.div`
     padding: 5px 25px;
     border-radius: 8px;
     background-color: orange;
+    font-size: 1.4rem;
     :hover {
       background-color: black;
       color: orange;

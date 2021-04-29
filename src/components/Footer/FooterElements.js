@@ -7,6 +7,7 @@ const FooterRoot = styled.div`
   position: fixed;
   bottom: 0;
   width: 100vw;
+  font-size: 1.6rem;
 `;
 
 export default FooterRoot;

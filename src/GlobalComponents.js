@@ -4,7 +4,7 @@ const GlobalStyles = styled.div`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: 62.5%;
 `;
 
 export const ViewHeader = styled.h2`
@@ -24,5 +24,9 @@ export const ViewRoot = styled.div`
   }
   padding: 20px;
 `;
+
+export const Text = styled.p`
+  font-size: 1.6rem;
+`
 
 export default GlobalStyles;

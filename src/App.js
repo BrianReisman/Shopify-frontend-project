@@ -1,5 +1,12 @@
+import GlobalStyles from "./GlobalComponents";
+import Nav from "./components/Nav/Nav";
 function App() {
-  return <div>hi</div>;
+  return (
+    <GlobalStyles>
+      <Nav />
+      hi
+    </GlobalStyles>
+  );
 }
 
 export default App;

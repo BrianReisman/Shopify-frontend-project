@@ -8,12 +8,12 @@ const Nav = (props) => {
       <Logo />
       <Menu>
         <ul>
-          <NavLink to="/">asdf</NavLink>
-          <NavLink to="/">asdf</NavLink>
-          <NavLink to="/">asdf</NavLink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/search">Search Movies</NavLink>
+          <NavLink to="/nominations">Your Nomination</NavLink>
+          <NavLink to="/about">About the Creator</NavLink>
         </ul>
       </Menu>
-      test from Nav.js
     </NavRoot>
   );
 };

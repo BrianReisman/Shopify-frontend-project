@@ -14,7 +14,7 @@ const Search = ({ setSavedMovies, savedMovies }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .get(`http://www.omdbapi.com/?apikey=c951a210&t=${input}`)
+      .get(`https://www.omdbapi.com/?apikey=c951a210&t=${input}`)
       .then((res) => {
         setCurrMovie(res.data);
       })

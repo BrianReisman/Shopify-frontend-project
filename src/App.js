@@ -4,6 +4,8 @@ import GlobalStyles from "./GlobalComponents";
 
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
+import Search from "./components/Search/Search";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
@@ -11,9 +13,11 @@ function App() {
       <Nav />
       <Switch>
         <Route exact path="/">
-          hi
+          <Home />
         </Route>
-        <Route path="/search">search</Route>
+        <Route path="/search">
+          <Search />
+        </Route>
         <Route path="/nominations">nominations</Route>
         <Route path="/about">about the creator</Route>
       </Switch>

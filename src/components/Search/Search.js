@@ -9,7 +9,9 @@ import {
   MovieCard,
   Span,
 } from "./SearchElements";
-import { ViewHeader, ViewRoot, Text, Message } from "../../GlobalComponents";
+import { ViewHeader, ViewRoot, Text,
+  // Message
+} from "../../GlobalComponents";
 import axios from "axios";
 
 const Search = ({ setSavedMovies, savedMovies }) => {

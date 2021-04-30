@@ -9,7 +9,10 @@ import {
   MovieCard,
   Span,
 } from "./SearchElements";
-import { ViewHeader, ViewRoot, Text,
+import {
+  ViewHeader,
+  ViewRoot,
+  Text,
   // Message
 } from "../../GlobalComponents";
 import axios from "axios";
@@ -17,6 +20,7 @@ import axios from "axios";
 const Search = ({ setSavedMovies, savedMovies }) => {
   const [input, setInput] = useState("");
   const [currMovie, setCurrMovie] = useState({});
+  const [disabled, setDisabled] = useState(false);
   // const [error, setError] = useState(false);
   // const [saved, setSaved] = useState(false);
   // let lastMovie = savedMovies.pop();
@@ -25,6 +29,16 @@ const Search = ({ setSavedMovies, savedMovies }) => {
     setInput(e.target.value);
     // setError(false);
     // setSaved(false);
+  };
+
+  const checkIfNominated = (title) => {
+    savedMovies.forEach((mov) => {
+      if(mov.Title === title){
+        setDisabled(true)
+      } else {
+        console.log('unique')
+      }
+    });
   };
 
   const submitHandler = (e) => {
@@ -39,7 +53,12 @@ const Search = ({ setSavedMovies, savedMovies }) => {
     axios
       .get(`https://www.omdbapi.com/?apikey=c951a210&t=${input}`)
       .then((res) => {
-        setCurrMovie(res.data);
+        if (res.data.Response === "False") {
+          console.log("no movie by that title found");
+        } else {
+          setCurrMovie(res.data);
+          checkIfNominated(res.data.Title);
+        }
       })
       .catch((err) => {
         // !! Add error message. Modal?
@@ -93,7 +112,7 @@ const Search = ({ setSavedMovies, savedMovies }) => {
           We've added {lastMovie} to your nominated list. You've got //4 left
         </Message>
       ) : null} */}
-      {currMovie && (
+      {currMovie.Title && (
         <Display>
           <MovieCard>
             <Img src={currMovie.Poster} alt="movie poster" />
@@ -113,7 +132,9 @@ const Search = ({ setSavedMovies, savedMovies }) => {
               <p>
                 <Span>Year:</Span> {currMovie.Year}
               </p>
-              <Button onClick={nominateHandler}>Nominate This Movie!</Button>
+              <Button disabled={disabled} onClick={nominateHandler}>
+                Nominate This Movie!
+              </Button>
             </CardInfo>
           </MovieCard>
         </Display>

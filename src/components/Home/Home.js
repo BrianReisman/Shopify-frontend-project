@@ -3,7 +3,7 @@ import {
   ViewHeader,
   HomeRoot,
   H1,
-  BackgroundVid,
+  // BackgroundVid,
 } from "../../GlobalComponents";
 // import backgroundVid from "../../assets/projector_running_pan.mp4";
 

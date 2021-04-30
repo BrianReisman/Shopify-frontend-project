@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const NavRoot = styled.nav`
   display: flex;
-  background-color: palegoldenrod;
+  /* background-color: palegoldenrod; */
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;

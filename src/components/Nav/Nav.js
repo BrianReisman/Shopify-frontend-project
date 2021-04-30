@@ -10,8 +10,8 @@ const Nav = (props) => {
         <ul>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/search">Search Movies</NavLink>
-          <NavLink to="/nominations">Your Nomination</NavLink>
-          <NavLink to="/about">About the Creator</NavLink>
+          <NavLink to="/nominations">Nominations</NavLink>
+          <NavLink to="/about">About</NavLink>
         </ul>
       </Menu>
     </NavRoot>

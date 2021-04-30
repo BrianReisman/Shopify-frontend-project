@@ -11,7 +11,7 @@ import Home from "./components/Home/Home";
 import Nomination from "./components/Nomination/Nomination";
 function App() {
   const [savedMovies, setSavedMovies] = useState([]);
-  // console.log(savedMovies);
+  console.log(savedMovies);
 
   return (
     <GlobalStyles>
@@ -26,7 +26,7 @@ function App() {
         <Route path="/nominations">
           <Nomination setSavedMovies={setSavedMovies} savedMovies={savedMovies}/>
         </Route>
-        <Route path="/about">about the creator</Route>
+        <Route path="/about">About</Route>
       </Switch>
       <Footer />
     </GlobalStyles>

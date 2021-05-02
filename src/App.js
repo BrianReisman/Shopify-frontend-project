@@ -28,7 +28,7 @@ function App() {
         </Route>
         <Route path="/about">About</Route>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </GlobalStyles>
   );
 }

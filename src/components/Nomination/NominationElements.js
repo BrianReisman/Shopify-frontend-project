@@ -9,6 +9,7 @@ export const Saved = styled.div`
 
 export const X = styled.button`
   background-color: red;
+  cursor: pointer;
 `;
 
 export const Message = styled.div`

@@ -8,10 +8,10 @@ const Nav = (props) => {
       <Logo />
       <Menu>
         <ul>
-          <NavLink to="/">Home</NavLink>
+          {/* <NavLink to="/">Home</NavLink> */}
           <NavLink to="/search">Search Movies</NavLink>
-          <NavLink to="/nominations">Nominations</NavLink>
-          <NavLink to="/about">About</NavLink>
+          <NavLink id="nom" to="/nominations">Nominations</NavLink>
+          {/* <NavLink to="/about">About</NavLink> */}
         </ul>
       </Menu>
     </NavRoot>

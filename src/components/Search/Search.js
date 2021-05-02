@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   Input,
@@ -8,6 +8,7 @@ import {
   CardInfo,
   MovieCard,
   Span,
+  MovieTitle,
 } from "./SearchElements";
 import {
   ViewHeader,
@@ -20,23 +21,29 @@ import axios from "axios";
 const Search = ({ setSavedMovies, savedMovies }) => {
   const [input, setInput] = useState("");
   const [currMovie, setCurrMovie] = useState({});
+  const [movies, setMovies] = useState([]);
   const [disabled, setDisabled] = useState(false);
-  // const [error, setError] = useState(false);
-  // const [saved, setSaved] = useState(false);
-  // let lastMovie = savedMovies.pop();
+  const [totalResults, setTotalResults] = useState()
+  const [page, setPage] = useState(1)
+  
+  useEffect(() => {
+    if (savedMovies.length === 5) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [savedMovies]);
 
   const changeHandler = (e) => {
     setInput(e.target.value);
-    // setError(false);
-    // setSaved(false);
   };
 
   const checkIfNominated = (title) => {
     savedMovies.forEach((mov) => {
-      if(mov.Title === title){
-        setDisabled(true)
+      if (mov.Title === title) {
+        setDisabled(true);
       } else {
-        console.log('unique')
+        setDisabled(false);
       }
     });
   };
@@ -44,28 +51,26 @@ const Search = ({ setSavedMovies, savedMovies }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (!input) {
-      // setError(true);
-      setCurrMovie("");
-      return;
-    }
-
     axios
-      .get(`https://www.omdbapi.com/?apikey=c951a210&t=${input}`)
+      .get(`https://www.omdbapi.com/?apikey=c951a210&s=${input}&page=${page}`)
       .then((res) => {
+        console.log(res.data) //an array of 0-9. nex
+        console.log(res.data.Search) //an array of 0-9. nex
         if (res.data.Response === "False") {
+          // !! Add error message. Modal?
           console.log("no movie by that title found");
         } else {
-          setCurrMovie(res.data);
-          checkIfNominated(res.data.Title);
+          setTotalResults(res.data.totalResults)
+          setMovies(res.data.Search)
+          // setCurrMovie(res.data.search);
+          // checkIfNominated(res.data.Title);
+          // setInput("");
         }
       })
       .catch((err) => {
         // !! Add error message. Modal?
         console.log(err);
       });
-
-    setInput("");
   };
 
   const nominateHandler = (e) => {
@@ -102,9 +107,15 @@ const Search = ({ setSavedMovies, savedMovies }) => {
         You have {5 - savedMovies.length} more movies you can nominate. Choose
         wisely!
       </Text>
+      <h2>showing {movies.length} of {totalResults || 0} results</h2>
       <Form onSubmit={submitHandler}>
         {/* {error ? <Message red>A film title is required</Message> : null} */}
-        <Input type="search" value={input} onChange={changeHandler} />
+        <Input
+          // disabled={inputDisabled}
+          type="search"
+          value={input}
+          onChange={changeHandler}
+        />
         <Button>Search</Button>
       </Form>
       {/* {saved ? (
@@ -112,14 +123,15 @@ const Search = ({ setSavedMovies, savedMovies }) => {
           We've added {lastMovie} to your nominated list. You've got //4 left
         </Message>
       ) : null} */}
-      {currMovie.Title && (
+
+
+      
+      {/* {currMovie.Title && (
         <Display>
+          <MovieTitle>{currMovie.Title}</MovieTitle>
           <MovieCard>
             <Img src={currMovie.Poster} alt="movie poster" />
             <CardInfo>
-              <p>
-                <Span>Title:</Span> {currMovie.Title}
-              </p>
               <p>
                 <Span>Director:</Span> {currMovie.Director}
               </p>
@@ -133,12 +145,14 @@ const Search = ({ setSavedMovies, savedMovies }) => {
                 <Span>Year:</Span> {currMovie.Year}
               </p>
               <Button disabled={disabled} onClick={nominateHandler}>
-                Nominate This Movie!
+                {disabled
+                  ? "You've already nominated this movie"
+                  : "Nominate This Movie!"}
               </Button>
             </CardInfo>
           </MovieCard>
         </Display>
-      )}
+      )} */}
     </ViewRoot>
   );
 };

@@ -47,6 +47,7 @@ export const BackgroundVid = styled.video`
   padding: none;
   position: fixed;
   z-index: -1;
+  /* backgound-color: #FBF6EC; */
 `;
 
 export const HomeRoot = styled(ViewRoot)`

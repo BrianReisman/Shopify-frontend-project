@@ -1,5 +1,4 @@
 import React from "react";
-import { ViewRoot, ViewHeader } from "../../GlobalComponents";
 import { Saved, X, Message } from "./NominationElements";
 
 const Nomination = ({ savedMovies, setSavedMovies }) => {
@@ -22,15 +21,20 @@ const Nomination = ({ savedMovies, setSavedMovies }) => {
   });
 
   return (
-    <ViewRoot>
-      <ViewHeader>Your Nominations!</ViewHeader>
-      <Message>
-        {
-          savedMovies.length === 0 ? <p>You haven't nominated any movies yet. If you'd like, you can nominate up to five.</p> : savedMovies.length < 5 ?<p>{savedMovies.length} down, {5 - savedMovies.length} left to go!</p> : <p>You have reached your limit!</p>
-        }
-      </Message>
-      {savedMovies && savedList}
-    </ViewRoot>
+    <Message>
+      {savedMovies.length === 0 ? (
+        <p>
+          You haven't nominated any movies yet. If you'd like, you can nominate
+          up to five.
+        </p>
+      ) : savedMovies.length < 5 ? (
+        <p>
+          {savedMovies.length} down, {5 - savedMovies.length} left to go!
+        </p>
+      ) : (
+        <p>You have reached your limit!</p>
+      )}
+    </Message>
   );
 };
 

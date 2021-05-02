@@ -1,35 +1,26 @@
 import { useState } from "react";
 
-import { Route, Switch } from "react-router-dom";
+import Root, { BackgroundImg, Title } from "./App.elements";
 
-import GlobalStyles from "./GlobalComponents";
-
-import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import Search from "./components/Search/Search";
-import Home from "./components/Home/Home";
-import Nomination from "./components/Nomination/Nomination";
+// import Nomination from "./components/Nomination/Nomination";
 function App() {
   const [savedMovies, setSavedMovies] = useState([]);
-  console.log(savedMovies);
+  const [currentMovies, setCurrentMovies] = useState([]);
+  console.log("currentMovies", currentMovies);
 
   return (
-    <GlobalStyles>
-      <Nav />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/search">
-          <Search setSavedMovies={setSavedMovies} savedMovies={savedMovies} />
-        </Route>
-        <Route path="/nominations">
-          <Nomination setSavedMovies={setSavedMovies} savedMovies={savedMovies}/>
-        </Route>
-        <Route path="/about">About</Route>
-      </Switch>
-      {/* <Footer /> */}
-    </GlobalStyles>
+    <Root>
+      <BackgroundImg>
+        <Title>The Shoppies</Title>
+        <Search/>
+        {/* <Home />
+      <Search setSavedMovies={setSavedMovies} savedMovies={savedMovies} />
+      <Nomination setSavedMovies={setSavedMovies} savedMovies={savedMovies} /> */}
+        {/* <Footer /> */}
+      </BackgroundImg>
+    </Root>
   );
 }
 

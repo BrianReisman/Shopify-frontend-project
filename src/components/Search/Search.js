@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
+  SearchRoot,
   Form,
   Input,
   Button,
@@ -9,7 +10,7 @@ import {
   MovieCard,
   Span,
   MovieTitle,
-} from "./SearchElements";
+} from "./Search.elements";
 import {
   Text,
   // Message
@@ -99,7 +100,10 @@ const Search = ({ setSavedMovies, savedMovies }) => {
   // };
 
   return (
-    <div>
+    <SearchRoot>
+
+
+
       <Text>
         {/* You have {5 - savedMovies.length} more movies you can nominate. Choose */}
         wisely!
@@ -118,7 +122,10 @@ const Search = ({ setSavedMovies, savedMovies }) => {
         />
         <Button>Search</Button>
       </Form>
-    </div>
+
+
+      
+    </SearchRoot>
 
     // {/* {saved ? (
     //   <Message green>

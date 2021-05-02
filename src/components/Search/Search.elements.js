@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const SearchRoot = styled.div`
+border: 2px solid red;
+
+    max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+`
+
 export const Form = styled.form`
   /* background-color: red; */
   * {

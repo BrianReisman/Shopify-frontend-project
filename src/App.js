@@ -15,6 +15,13 @@ function App() {
       <BackgroundImg>
         <Title>The Shoppies</Title>
         <Search/>
+
+
+
+
+
+
+        
         {/* <Home />
       <Search setSavedMovies={setSavedMovies} savedMovies={savedMovies} />
       <Nomination setSavedMovies={setSavedMovies} savedMovies={savedMovies} /> */}

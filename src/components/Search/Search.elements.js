@@ -1,43 +1,53 @@
 import styled from "styled-components";
 
 export const SearchRoot = styled.div`
-border: 2px solid red;
-
-    max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
-
-`
-
+  /* padding: 20px; */
+  /* position: absolute; */
+`;
+export const Header = styled.p`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  /* line-height: 42px; */
+  letter-spacing: 0.25em;
+  text-align: center;
+  color: #ffffff;
+`;
 export const Form = styled.form`
   /* background-color: red; */
-  * {
-    margin: 0 auto;
-    padding: 0;
-  }
+
   display: flex;
   flex-direction: column;
-  /* min-width: 600px; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 `;
 
 export const Input = styled.input`
-  font-size: 16px;
+  width: 900px;
+  font-size: 20px;
+  background-color: #25273c;
+  color: #ffffff;
   outline: none;
   border: 1px solid #bbb;
-  margin: 10px;
+  margin-bottom: 20px;
+  border: none;
   border-radius: 8px;
-  padding: 4px;
+  padding: 20px;
 `;
 
 export const Button = styled.button`
   color: teal;
-  font-size: 1.6rem;
+  font-size: 20px;
   margin: 0px auto;
-  padding: 10px 30px;
+  padding: 8px 35px;
   outline: none;
   border: none;
   border-radius: 8px;
-  /* padding: 10px 20px; */
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
@@ -55,7 +65,7 @@ export const Display = styled.div`
 `;
 
 export const Img = styled.img`
-display: block;
+  display: block;
   /* max-height: ; */
   /* width: auto; */
   /* border: 1px solid black; */

@@ -10,20 +10,16 @@ import {
   MovieCard,
   Span,
   MovieTitle,
+  Header,
 } from "./Search.elements";
-import {
-  Text,
-  // Message
-} from "../../App.elements";
 import axios from "axios";
 
-const Search = ({ setSavedMovies, savedMovies }) => {
-  // const [input, setInput] = useState("");
-  // const [currMovie, setCurrMovie] = useState({});
-  // const [movies, setMovies] = useState([]);
+const Search = ({ movies, setMovies, setTotalResults }) => {
+  const [input, setInput] = useState("");
+  const [page, setPage] = useState(1);
+  console.log("page", page); //!rigth now page keeps increasing
+
   // const [disabled, setDisabled] = useState(false);
-  // const [totalResults, setTotalResults] = useState();
-  // const [page, setPage] = useState(1);
 
   // useEffect(() => {
   //   if (savedMovies.length === 5) {
@@ -33,9 +29,9 @@ const Search = ({ setSavedMovies, savedMovies }) => {
   //   }
   // }, [savedMovies]);
 
-  // const changeHandler = (e) => {
-  //   setInput(e.target.value);
-  // };
+  const changeHandler = (e) => {
+    setInput(e.target.value);
+  };
 
   // const checkIfNominated = (title) => {
   //   savedMovies.forEach((mov) => {
@@ -47,30 +43,30 @@ const Search = ({ setSavedMovies, savedMovies }) => {
   //   });
   // };
 
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-  //   axios
-  //     .get(`https://www.omdbapi.com/?apikey=c951a210&s=${input}&page=${page}`)
-  //     .then((res) => {
-  //       console.log(res.data); //an array of 0-9. nex
-  //       console.log(res.data.Search); //an array of 0-9. nex
-  //       if (res.data.Response === "False") {
-  //         // !! Add error message. Modal?
-  //         console.log("no movie by that title found");
-  //       } else {
-  //         setTotalResults(res.data.totalResults);
-  //         setMovies(res.data.Search);
-  //         // setCurrMovie(res.data.search);
-  //         // checkIfNominated(res.data.Title);
-  //         // setInput("");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       // !! Add error message. Modal?
-  //       console.log(err);
-  //     });
-  // };
+    axios
+      .get(`https://www.omdbapi.com/?apikey=c951a210&s=${input}&page=${page}`)
+      .then((res) => {
+        // console.log(res.data); //an array of 0-9. nex
+        // console.log(res.data.Search); //an array of 0-9. nex
+        if (res.data.Response === "False") {
+          // !! Add error message. Modal?
+          console.log("no movie by that title found");
+          setMovies([]);
+          setInput("");
+        } else {
+          setTotalResults(res.data.totalResults);
+          // checkIfNominated(res.data.Title);
+          setPage(page + 1);
+        }
+      })
+      .catch((err) => {
+        // !! Add error message. Modal?
+        console.log(err);
+      });
+  };
 
   // const nominateHandler = (e) => {
   //   if (!currMovie.Title) {
@@ -101,30 +97,29 @@ const Search = ({ setSavedMovies, savedMovies }) => {
 
   return (
     <SearchRoot>
-
-
-
-      <Text>
+      <Header>
         {/* You have {5 - savedMovies.length} more movies you can nominate. Choose */}
-        wisely!
-      </Text>
-      <h2>
-        {/* showing {movies.length} of {totalResults || 0} results */}
-      </h2>
-      <Form>
-      {/* <Form onSubmit={submitHandler}> */}
-        {/* {error ? <Message red>A film title is required</Message> : null} */}
+        Nominate up to 5 movies!
+      </Header>
+
+      {/* {movies.length ? (
+        <h2>
+          showing {movies.length} of {totalResults || 0} results
+        </h2>
+      ) : null} */}
+
+      {/* {error ? <Message red>A film title is required</Message> : null} */}
+
+      <Form onSubmit={submitHandler}>
         <Input
           // disabled={inputDisabled}
+          placeholder="Enter movie title..."
           type="search"
-          // value={input}
-          // onChange={changeHandler}
+          value={input}
+          onChange={changeHandler}
         />
         <Button>Search</Button>
       </Form>
-
-
-      
     </SearchRoot>
 
     // {/* {saved ? (

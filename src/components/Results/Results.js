@@ -8,7 +8,20 @@ import {
   Showing,
 } from "./Results.elements";
 
-const Results = ({ movies, totalResults, addNomination, searchMoveMovies }) => {
+const Results = ({
+  movies,
+  totalResults,
+  addNomination,
+  searchMoreMovies,
+  savedMovies,
+}) => {
+  const savedMovieHash = {};
+  savedMovies.forEach((savedmovie) => {
+    if (!savedMovieHash[savedmovie.imdbID]) {
+      savedMovieHash[savedmovie.imdbID] = 1;
+    }
+  });
+
   return (
     movies.length > 0 && (
       <ResultsRoot>
@@ -16,12 +29,17 @@ const Results = ({ movies, totalResults, addNomination, searchMoveMovies }) => {
           Showing {movies.length} of {totalResults} results
         </Showing>
         {movies.map((movie, i) => {
+          let disabled = false;
+          if (savedMovieHash[movie.imdbID]) {
+            disabled = true;
+          }
           return (
             <MovieCard key={i}>
               <Info>
                 {movie.Title} ({movie.Year})
               </Info>
               <MovieCardNominateBtn
+                disabled={disabled}
                 onClick={() => {
                   addNomination(movie);
                 }}
@@ -32,7 +50,7 @@ const Results = ({ movies, totalResults, addNomination, searchMoveMovies }) => {
           );
         })}
         {totalResults > movies.length && (
-          <ShowMoreBtn onClick={searchMoveMovies}>Show more</ShowMoreBtn>
+          <ShowMoreBtn onClick={searchMoreMovies}>Show more</ShowMoreBtn>
         )}
       </ResultsRoot>
     )

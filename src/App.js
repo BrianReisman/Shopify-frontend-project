@@ -22,8 +22,8 @@ console.log(savedMovies)
     setSavedMovies([...savedMovies, movie]);
   };
 
-  const searchMoveMovies = () => {
-    console.log("searchMoveMovies");
+  const searchMoreMovies = () => {
+    console.log("searchMoreMovies");
   };
 
   return (
@@ -43,7 +43,7 @@ console.log(savedMovies)
         movies={movies}
         totalResults={totalResults}
         addNomination={addNomination}
-        searchMoveMovies={searchMoveMovies}
+        searchMoreMovies={searchMoreMovies}
       />
     </AppRoot>
   );

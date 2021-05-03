@@ -32,6 +32,8 @@ const Results = ({
           let disabled = false;
           if (savedMovieHash[movie.imdbID]) {
             disabled = true;
+          } else if (savedMovies.length >= 5){
+            disabled = true;
           }
           return (
             <MovieCard key={i}>

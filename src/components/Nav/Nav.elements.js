@@ -6,19 +6,22 @@ export const NavRoot = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 35px;
+  /* padding: 0 35px; */
+  width: 100%;
 `;
 
 export const Title = styled.h2`
   font-size: 60px;
   letter-spacing: 0.15em;
   color: #ffffff;
+  margin: 40px;
 `;
 
 export const StyledHamburger = styled.div`
-  /* position: absolute; */
-  /* top: 0; */
-  /* right: 0; */
+  position: fixed;
+  top: 18px;
+  right: 0px;
+  margin: 40px;
   height: 48px;
   width: 60px;
   padding: 5px;
@@ -31,7 +34,7 @@ export const HamburgerRow = styled.div`
   width: 50px;
   height: 10px;
   border-radius: 7px;
-  background-color: #c4c4c4;
+  background-color: #f0f4c4;
 `;
 
 export const Indicator = styled.div`
@@ -48,5 +51,4 @@ export const Indicator = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;

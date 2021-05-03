@@ -2,10 +2,11 @@ import { useState } from "react";
 
 // components
 import Search from "./components/Search/Search";
-import Results from "./components/Display/Results/Results";
+import Results from "./components/Results/Results";
 import Nav from "./components/Nav/Nav";
 
 // style elements
+import { AppRoot } from "./App.elements";
 
 function App() {
   const [savedMovies] = useState([
@@ -16,12 +17,15 @@ function App() {
   ]);
   const [movies, setMovies] = useState([]);
   const [totalResults, setTotalResults] = useState(null);
-  console.log(movies);
-  console.log("total results", totalResults);
+  // const [modal, showModal] = useState(false)
+
+  const toggleModal = (e) => {
+    console.log("toggle modal");
+  };
 
   return (
-    <div>
-      <Nav savedMovies={savedMovies} />
+    <AppRoot>
+      <Nav savedMovies={savedMovies} toggleModal={toggleModal} />
 
       {/* nominations modal */}
 
@@ -36,7 +40,7 @@ function App() {
         movies={movies}
         totalResults={totalResults}
       />
-    </div>
+    </AppRoot>
   );
 }
 

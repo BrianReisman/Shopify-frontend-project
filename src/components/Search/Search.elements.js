@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const SearchRoot = styled.div`
+/* border: 1px solid red; */
+
+
   max-width: 900px;
   margin: 0 auto;
   /* padding: 20px; */
   /* position: absolute; */
 `;
-export const Header = styled.p`
+export const Header = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 36px;
@@ -16,6 +19,9 @@ export const Header = styled.p`
   letter-spacing: 0.25em;
   text-align: center;
   color: #ffffff;
+  p{
+    font-size: 16px;
+  }
 `;
 export const Form = styled.form`
   /* background-color: red; */

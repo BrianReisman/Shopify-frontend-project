@@ -6,27 +6,23 @@ import {
   MovieCardNominateBtn,
   MovieCardYear,
   MovieCardImg,
+  ImageDiv,
   Info,
 } from "./Results.elements";
 
 const Results = ({ movies, totalResults }) => {
+  console.log(movies);
   return (
     <ResultsRoot>
-      <h3>
-        Showing {movies.length} of {totalResults} results
-      </h3>
+      <h3>{/* Showing {movies.length} of {totalResults} results */}</h3>
       {movies.map((movie) => {
         return (
           <MovieCard>
-            <MovieCardImg
-              src={movie.Poster}
-              alt="no Poster availible for this movie"
-            />
             <Info>
               <MovieCardTitle>{movie.Title}</MovieCardTitle>
               <MovieCardYear>{movie.Year}</MovieCardYear>
-              <MovieCardNominateBtn>+</MovieCardNominateBtn>
             </Info>
+            <MovieCardNominateBtn>Nominate</MovieCardNominateBtn>
           </MovieCard>
         );
       })}

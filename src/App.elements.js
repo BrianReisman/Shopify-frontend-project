@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
+export const AppRoot = styled.div`
+  border: 1px solid red;
 
-export const H1 = styled.h1`
-  font-size: 6.2rem;
-  text-align: center;
-  color: white;
-  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
-
-

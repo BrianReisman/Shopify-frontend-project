@@ -1,17 +1,5 @@
 import React, { useState } from "react";
-import {
-  SearchRoot,
-  Form,
-  Input,
-  Button,
-  // Display,
-  // Img,
-  // CardInfo,
-  // MovieCard,
-  // Span,
-  // MovieTitle,
-  Header,
-} from "./Search.elements";
+import { SearchRoot, Form, Input, Button, Header } from "./Search.elements";
 import axios from "axios";
 
 const Search = ({ movies, setMovies, setTotalResults }) => {
@@ -56,7 +44,7 @@ const Search = ({ movies, setMovies, setTotalResults }) => {
           console.log("no movie by that title found");
           setMovies([]);
           setInput("");
-          setTotalResults(0)
+          setTotalResults(0);
         } else {
           setTotalResults(res.data.totalResults);
           setMovies(res.data.Search);
@@ -99,17 +87,9 @@ const Search = ({ movies, setMovies, setTotalResults }) => {
   return (
     <SearchRoot>
       <Header>
-        {/* You have {5 - savedMovies.length} more movies you can nominate. Choose */}
         Nominate up to 5 movies!
+        <p>You have {5 - 5} more movies you can nominate.</p>
       </Header>
-
-      {/* {movies.length ? (
-        <h2>
-          showing {movies.length} of {totalResults || 0} results
-        </h2>
-      ) : null} */}
-
-      {/* {error ? <Message red>A film title is required</Message> : null} */}
 
       <Form onSubmit={submitHandler}>
         <Input
@@ -129,11 +109,9 @@ const Search = ({ movies, setMovies, setTotalResults }) => {
     //   </Message>
     // ) : null} */}
 
-    
     //  <Button disabled={disabled} onClick={nominateHandler}>
     //  {disabled
     //? "You've already nominated this movie"
-
   );
 };
 

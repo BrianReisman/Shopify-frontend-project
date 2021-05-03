@@ -7,11 +7,11 @@ import {
   Indicator,
 } from "./Nav.elements";
 
-const Nav = ({savedMovies}) => {
+const Nav = ({ savedMovies, toggleModal }) => {
   return (
     <NavRoot>
       <Title>The Shoppies</Title>
-      <StyledHamburger>
+      <StyledHamburger onClick={toggleModal}>
         <Indicator>{savedMovies.length}</Indicator>
         <HamburgerRow />
         <HamburgerRow />

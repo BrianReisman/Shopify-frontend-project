@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 
 const Search = ({ movies, setMovies, setTotalResults }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("good will hunting");
   const [page, setPage] = useState(1);
   // console.log("page", page); //!rigth now page keeps increasing
 

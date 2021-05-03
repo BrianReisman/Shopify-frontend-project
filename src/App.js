@@ -2,10 +2,10 @@ import { useState } from "react";
 
 // components
 import Search from "./components/Search/Search";
-import Display from "./components/Display/Display";
+import Results from "./components/Display/Results/Results";
+import Nav from "./components/Nav/Nav";
 
-// elements
-import { BackgroundImg, Title } from "./App.elements";
+// style elements
 
 function App() {
   const [savedMovies] = useState([
@@ -20,21 +20,23 @@ function App() {
   console.log("total results", totalResults);
 
   return (
-    <BackgroundImg>
-      <Title>The Shoppies</Title>
+    <div>
+      <Nav savedMovies={savedMovies} />
+
+      {/* nominations modal */}
+
       <Search
         movies={movies}
         setMovies={setMovies}
         setTotalResults={setTotalResults}
       />
-      {/* <Root> */}
-      <Display
+
+      <Results
         savedMovies={savedMovies}
         movies={movies}
         totalResults={totalResults}
       />
-      {/* </Root> */}
-    </BackgroundImg>
+    </div>
   );
 }
 

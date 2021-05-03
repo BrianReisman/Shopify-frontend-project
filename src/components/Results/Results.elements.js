@@ -50,6 +50,7 @@ export const MovieCardYear = styled.p`
 
 export const MovieCardNominateBtn = styled.button`
   /* width: 50%; */
+  margin-left: 15px;
 `;
 
 export const ShowMoreBtn = styled.button`

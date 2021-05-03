@@ -10,7 +10,8 @@ const Search = ({ savedMovies, elevateInput }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    elevateInput(input);
+    elevateInput(input.trim());
+    setInput(input.trim())
   };
 
   return (

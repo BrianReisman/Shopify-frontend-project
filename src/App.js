@@ -15,7 +15,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [totalResults, setTotalResults] = useState(null);
   const [page] = useState(1);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleModal = (e) => {
     setShowModal(!showModal);
@@ -53,7 +53,18 @@ function App() {
     <AppRoot>
       <Nav savedMovies={savedMovies} toggleModal={toggleModal} />
 
-      {showModal && <Modal toggleModal={toggleModal} />}
+      {showModal && (
+        <Modal toggleModal={toggleModal} savedMovies={savedMovies} />
+      )}
+      {showModal && (
+        <div
+          id="overlay"
+          className="active"
+          onClick={() => {
+            toggleModal();
+          }}
+        ></div>
+      )}
 
       <Search
         searchSubmitHandler={searchSubmitHandler}

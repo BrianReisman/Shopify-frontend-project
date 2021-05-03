@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalRoot = styled.div`
-  background-color: red;
+  background-color: white;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -13,14 +13,26 @@ export const ModalRoot = styled.div`
   height: 60%;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 `;
-
 export const Close = styled.div`
-  height: 26px;
-  width: 26px;
+  /* border: 1px solid red; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
   font-size: 26px;
   cursor: pointer;
   :hover {
-    color: white;
+    color: #bbb;
   }
+`;
+export const ModalHead = styled.div`
+  /* border: 1px solid yellow; */
+
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `;

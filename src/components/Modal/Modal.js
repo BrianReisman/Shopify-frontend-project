@@ -1,15 +1,21 @@
-import { ModalRoot, Close } from "./Modal.elements";
+import { ModalRoot, Close, ModalHead } from "./Modal.elements";
 
-const Modal = ({ toggleModal }) => {
+const Modal = ({ toggleModal, savedMovies }) => {
   return (
     <ModalRoot>
-      <Close
-        onClick={() => {
-          toggleModal();
-        }}
-      >
-        &times;
-      </Close>
+      <ModalHead>
+        <Close
+          onClick={() => {
+            toggleModal();
+          }}
+        >
+          &times;
+        </Close>
+      </ModalHead>
+      {savedMovies.map((savedmovie) => {
+        console.log(savedmovie);
+        return <div key={savedmovie.imdbID}>{savedmovie.imdbID}</div>;
+      })}
     </ModalRoot>
   );
 };

@@ -16,8 +16,8 @@ function App() {
   ]);
   const [movies, setMovies] = useState([]);
   const [totalResults, setTotalResults] = useState(null);
-  // console.log(movies);
-// console.log('total results', totalResults)
+  console.log(movies);
+  console.log("total results", totalResults);
 
   return (
     <BackgroundImg>
@@ -28,7 +28,11 @@ function App() {
         setTotalResults={setTotalResults}
       />
       {/* <Root> */}
-      <Display savedMovies={savedMovies} movies={movies} totalResults={totalResults} />
+      <Display
+        savedMovies={savedMovies}
+        movies={movies}
+        totalResults={totalResults}
+      />
       {/* </Root> */}
     </BackgroundImg>
   );

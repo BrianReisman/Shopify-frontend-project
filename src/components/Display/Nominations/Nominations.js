@@ -2,7 +2,7 @@ import React from "react";
 import { NominationsRoot } from "./Nominations.elments";
 
 const Nominations = ({ savedMovies }) => {
-  console.log(savedMovies)
+
   return (
     <NominationsRoot>
       <h2>Nominations</h2>

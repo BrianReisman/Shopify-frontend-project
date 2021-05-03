@@ -7,7 +7,7 @@ import { DisplayRoot } from "./Display.elements";
 const Display = ({ movies, savedMovies, totalResults }) => {
   return (
     <DisplayRoot>
-      <Results movies={movies} totalResults={totalResults}/>
+      <Results movies={movies} totalResults={totalResults} />
       <Nominations savedMovies={savedMovies} />
     </DisplayRoot>
   );

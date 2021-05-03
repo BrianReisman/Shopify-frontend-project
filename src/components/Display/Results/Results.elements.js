@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ResultsRoot = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
+
   margin: 5px;
   background-color: #25273c;
   padding: 20px;
@@ -14,8 +15,9 @@ export const ResultsRoot = styled.div`
 `;
 
 export const MovieCard = styled.div`
+  /* border: 1px solid yellow; */
+  
   display: flex;
-  border: 1px solid yellow;
   width: 350px;
   margin: 15px;
   border-radius: 8px;

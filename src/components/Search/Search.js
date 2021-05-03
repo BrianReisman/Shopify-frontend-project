@@ -17,7 +17,7 @@ import axios from "axios";
 const Search = ({ movies, setMovies, setTotalResults }) => {
   const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
-  console.log("page", page); //!rigth now page keeps increasing
+  // console.log("page", page); //!rigth now page keeps increasing
 
   // const [disabled, setDisabled] = useState(false);
 
@@ -56,10 +56,11 @@ const Search = ({ movies, setMovies, setTotalResults }) => {
           console.log("no movie by that title found");
           setMovies([]);
           setInput("");
+          setTotalResults(0)
         } else {
           setTotalResults(res.data.totalResults);
-          // checkIfNominated(res.data.Title);
-          setPage(page + 1);
+          setMovies(res.data.Search);
+          // setPage(page + 1);
         }
       })
       .catch((err) => {
@@ -128,33 +129,11 @@ const Search = ({ movies, setMovies, setTotalResults }) => {
     //   </Message>
     // ) : null} */}
 
-    // {/* {currMovie.Title && (
-    //   <Display>
-    //     <MovieTitle>{currMovie.Title}</MovieTitle>
-    //     <MovieCard>
-    //       <Img src={currMovie.Poster} alt="movie poster" />
-    //       <CardInfo>
-    //         <p>
-    //           <Span>Director:</Span> {currMovie.Director}
-    //         </p>
-    //         <p>
-    //           <Span>Cast:</Span> {currMovie.Actors}
-    //         </p>
-    //         <p>
-    //           <Span>Writer:</Span> {currMovie.Writer}
-    //         </p>
-    //         <p>
-    //           <Span>Year:</Span> {currMovie.Year}
-    //         </p>
-    //         <Button disabled={disabled} onClick={nominateHandler}>
-    //           {disabled
-    //             ? "You've already nominated this movie"
-    //             : "Nominate This Movie!"}
-    //         </Button>
-    //       </CardInfo>
-    //     </MovieCard>
-    //   </Display>
-    // )} */}
+    
+    //  <Button disabled={disabled} onClick={nominateHandler}>
+    //  {disabled
+    //? "You've already nominated this movie"
+
   );
 };
 

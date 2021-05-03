@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalRoot = styled.div`
-  background-color: white;
+  background-color: #fff1aa;
   position: fixed;
   top: 50%;
   left: 50%;

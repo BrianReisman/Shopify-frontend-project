@@ -49,12 +49,22 @@ function App() {
     searchSubmitHandler(input);
   };
 
+  const removeNomination = (movie) => {
+    setSavedMovies(
+      savedMovies.filter((savedmovie) => savedmovie.imdbID !== movie.imdbID)
+    );
+  };
+
   return (
     <AppRoot>
       <Nav savedMovies={savedMovies} toggleModal={toggleModal} />
 
       {showModal && (
-        <Modal toggleModal={toggleModal} savedMovies={savedMovies} />
+        <Modal
+          toggleModal={toggleModal}
+          savedMovies={savedMovies}
+          removeNomination={removeNomination}
+        />
       )}
       {showModal && (
         <div

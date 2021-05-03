@@ -52,5 +52,7 @@ export const MovieCardNominateBtn = styled.button`
   /* width: 50%; */
 `;
 
-export const ShowMoreBtn = styled.button``;
+export const ShowMoreBtn = styled.button`
+margin: 20px;
+`;
 export const Showing = styled.p``;

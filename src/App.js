@@ -1,9 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
 
 // components
 import Search from "./components/Search/Search";
 import Results from "./components/Results/Results";
 import Nav from "./components/Nav/Nav";
+import Modal from "./components/Modal/Modal";
 
 // style elements
 import { AppRoot } from "./App.elements";
@@ -12,30 +14,51 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [totalResults, setTotalResults] = useState(null);
-  // const [modal, showModal] = useState(false)
-console.log(savedMovies)
+  const [page] = useState(1);
+  const [showModal, setShowModal] = useState(true);
+
   const toggleModal = (e) => {
-    console.log("toggle modal");
+    setShowModal(!showModal);
   };
 
   const addNomination = (movie) => {
     setSavedMovies([...savedMovies, movie]);
   };
 
-  const searchMoreMovies = () => {
-    console.log("searchMoreMovies");
+  const searchSubmitHandler = (input) => {
+    axios
+      .get(`https://www.omdbapi.com/?apikey=c951a210&s=${input}&page=${page}`)
+      .then((res) => {
+        if (res.data.Response === "False") {
+          // !! Add error message. Modal?
+          console.log("no movie by that title found");
+          setMovies([]);
+          setTotalResults(0);
+        } else {
+          setTotalResults(res.data.totalResults);
+          setMovies(res.data.Search);
+        }
+      })
+      .catch((err) => {
+        // !! Add error message. Modal?
+        console.log(err);
+      });
+  };
+
+  const elevateInput = (input) => {
+    searchSubmitHandler(input);
   };
 
   return (
     <AppRoot>
       <Nav savedMovies={savedMovies} toggleModal={toggleModal} />
 
-      {/* nominations modal */}
+      {showModal && <Modal toggleModal={toggleModal} />}
 
       <Search
-        movies={movies}
-        setMovies={setMovies}
-        setTotalResults={setTotalResults}
+        searchSubmitHandler={searchSubmitHandler}
+        savedMovies={savedMovies}
+        elevateInput={elevateInput}
       />
 
       <Results
@@ -43,7 +66,7 @@ console.log(savedMovies)
         movies={movies}
         totalResults={totalResults}
         addNomination={addNomination}
-        searchMoreMovies={searchMoreMovies}
+        searchSubmitHandler={searchSubmitHandler}
       />
     </AppRoot>
   );

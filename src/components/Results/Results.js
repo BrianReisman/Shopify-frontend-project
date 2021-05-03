@@ -9,11 +9,11 @@ import {
 } from "./Results.elements";
 
 const Results = ({
+  savedMovies,
   movies,
   totalResults,
   addNomination,
-  searchMoreMovies,
-  savedMovies,
+  searchSubmitHandler,
 }) => {
   const savedMovieHash = {};
   savedMovies.forEach((savedmovie) => {
@@ -32,7 +32,7 @@ const Results = ({
           let disabled = false;
           if (savedMovieHash[movie.imdbID]) {
             disabled = true;
-          } else if (savedMovies.length >= 5){
+          } else if (savedMovies.length >= 5) {
             disabled = true;
           }
           return (
@@ -52,7 +52,7 @@ const Results = ({
           );
         })}
         {totalResults > movies.length && (
-          <ShowMoreBtn onClick={searchMoreMovies}>Show more</ShowMoreBtn>
+          <ShowMoreBtn onClick={searchSubmitHandler}>Show more</ShowMoreBtn>
         )}
       </ResultsRoot>
     )

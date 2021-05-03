@@ -34,7 +34,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 900px;
+  max-width: 900px;
   font-size: 20px;
   background-color: #25273c;
   color: #ffffff;

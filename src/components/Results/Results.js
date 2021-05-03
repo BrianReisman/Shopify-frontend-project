@@ -2,32 +2,40 @@ import React from "react";
 import {
   ResultsRoot,
   MovieCard,
-  MovieCardTitle,
   MovieCardNominateBtn,
-  MovieCardYear,
-  MovieCardImg,
-  ImageDiv,
   Info,
+  ShowMoreBtn,
+  Showing,
 } from "./Results.elements";
 
-const Results = ({ movies, totalResults }) => {
-  console.log(movies);
+const Results = ({ movies, totalResults, addNomination, searchMoveMovies }) => {
   return (
-    <ResultsRoot>
-      <h3>{/* Showing {movies.length} of {totalResults} results */}</h3>
-      {movies.map((movie) => {
-        return (
-          <MovieCard>
-            <Info>
-              <MovieCardTitle>{movie.Title}</MovieCardTitle>
-              <MovieCardYear>{movie.Year}</MovieCardYear>
-            </Info>
-            <MovieCardNominateBtn>Nominate</MovieCardNominateBtn>
-          </MovieCard>
-        );
-      })}
-      {/* <button>more</button> */}
-    </ResultsRoot>
+    movies.length > 0 && (
+      <ResultsRoot>
+        <Showing>
+          Showing {movies.length} of {totalResults} results
+        </Showing>
+        {movies.map((movie, i) => {
+          return (
+            <MovieCard key={i}>
+              <Info>
+                {movie.Title} ({movie.Year})
+              </Info>
+              <MovieCardNominateBtn
+                onClick={() => {
+                  addNomination(movie);
+                }}
+              >
+                Nominate
+              </MovieCardNominateBtn>
+            </MovieCard>
+          );
+        })}
+        {totalResults > movies.length && (
+          <ShowMoreBtn onClick={searchMoveMovies}>Show more</ShowMoreBtn>
+        )}
+      </ResultsRoot>
+    )
   );
 };
 

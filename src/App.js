@@ -9,18 +9,21 @@ import Nav from "./components/Nav/Nav";
 import { AppRoot } from "./App.elements";
 
 function App() {
-  const [savedMovies] = useState([
-    {
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BMTU0NzcwMzc3Ml5BMl5BanBnXkFtZTcwOTE3MzE3MQ@@._V1._CR4,3,324,429_SY132_CR5,0,89,132_AL_.jpg_V1_SX300.jpg",
-    },
-  ]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [totalResults, setTotalResults] = useState(null);
   // const [modal, showModal] = useState(false)
-
+console.log(savedMovies)
   const toggleModal = (e) => {
     console.log("toggle modal");
+  };
+
+  const addNomination = (movie) => {
+    setSavedMovies([...savedMovies, movie]);
+  };
+
+  const searchMoveMovies = () => {
+    console.log("searchMoveMovies");
   };
 
   return (
@@ -39,6 +42,8 @@ function App() {
         savedMovies={savedMovies}
         movies={movies}
         totalResults={totalResults}
+        addNomination={addNomination}
+        searchMoveMovies={searchMoveMovies}
       />
     </AppRoot>
   );
